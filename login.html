@@ -128,8 +128,8 @@
         var uname = document.getElementById("username").value;
         var pword = document.getElementById("password").value;
         const Http = new XMLHttpRequest();
-        const url='https://script.google.com/macros/s/AKfycbyxLUDyNjCQyPPPzaE7CnWMTBGgetrDwQeKkjfGPNdLieRvmgw/exec';
-        var data = "?username="+uname+"&password="+pword+"";
+        const url='https://script.google.com/macros/s/AKfycbyQF33yt1msej9kH2zNbfLiX1feCscKoft3w7ifu3njj6fmCA/exec';
+        var data = "?username="+uname+"&password="+pword+"&action=login";
         Http.open("GET", String(url+data));
         Http.send();
 
@@ -139,11 +139,13 @@
             console.log(Http.readyState);
         if (Http.readyState == 4)
         {
+            console.log(String(ok));
+
           if(String(ok) == "true"){
               console.log("truo");
               alert("Success!");
                sessionStorage.setItem("usernamea",uname);
-               window.location = "log.html";
+               //window.location = "log.html";
             }
             else{
               console.log("falso");
