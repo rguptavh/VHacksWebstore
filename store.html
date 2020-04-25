@@ -8,7 +8,7 @@
     <title>Store</title>
 </head>
 <body>
-    <ul id="products"></ul>
+    <ul class="list-group" id="products"></ul>
 
     <input type="text" id="candidate"/>
     <button onclick="addItem()">add item</button>
@@ -28,11 +28,17 @@ function addItem(){
 
 
 }
-function addItem(x, y){
+function addItem(x, y, z){
     var ul = document.getElementById("products");
     var li = document.createElement("li");
     li.setAttribute('id',y);
     li.appendChild(document.createTextNode(x));
+    li.classList.add("list-group-item","d-flex","justify-content-between","align-items-center");
+    var span = document.createElement("span");
+    span.classList.add("badge", "badge-primary", "badge-pill");
+    span.setAttribute('id',y+"quantity");
+    span.appendChild(document.createTextNode(""+z));
+    li.appendChild(span);
     ul.appendChild(li);
 
 
@@ -64,8 +70,9 @@ const Http = new XMLHttpRequest();
             console.log(String(ok));
             var papi = ok.split(",");
             for(i = 0; i<papi.length/3;i++){
-                var x = papi[i*3] + " " + papi[(i*3+1)] + " " + papi[(i*3+2)];
-                addItem(x, i);
+                var x = papi[i*3] + " " + papi[(i*3+1)];
+                var y = papi[(i*3+2)];
+                addItem(x, i,y);
                 var but = document.createElement("button");
                 but.innerText = "Buy Product";
             }
