@@ -78,7 +78,6 @@ const Http = new XMLHttpRequest();
                 addItem(x, i,y,a);
                 var num = document.createElement("input");
                 num.setAttribute('type','number');
-                num.setAttribute('id',i);
                 document.getElementById("products").appendChild(num);
 
             }
@@ -94,18 +93,21 @@ function order(){
     var papi = localStorage.getItem("itemArr").split(",");
     for(var i = 0; i<papi.length/3;i++){
         var buy = document.getElementsByTagName("input")[i].value;
-        if(buy!=0 && buy!=""){
+        console.log(buy)
+        if(buy>0 && buy!=""){
 
-            if(buy<=papi[i*3+2]){
+            if(buy<=parseInt(papi[i*3+2])){
                 ord+=papi[i*3]+","+buy+",";
             }
             else{
                 alert("Insufficient stock of item to fulfill order. Please resubmit order");
+                ord = "";
                 break;
             }
 
         }
     }
+    console.log(ord);
     if(ord!=""){
         const Http = new XMLHttpRequest();
         const url='https://script.google.com/macros/s/AKfycbyQF33yt1msej9kH2zNbfLiX1feCscKoft3w7ifu3njj6fmCA/exec';
