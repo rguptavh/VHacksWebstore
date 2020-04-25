@@ -78,6 +78,8 @@ const Http = new XMLHttpRequest();
                 addItem(x, i,y,a);
                 var num = document.createElement("input");
                 num.setAttribute('type','number');
+                num.setAttribute('min','0');
+                num.setAttribute('onkeypress','return event.charCode >= 48');
                 document.getElementById("products").appendChild(num);
 
             }
