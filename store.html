@@ -9,10 +9,9 @@
 </head>
 <body>
     <ul class="list-group" id="products"></ul>
+    <button>Submit Order</button>
 
-    <input type="text" id="candidate"/>
-    <button onclick="addItem()">add item</button>
-    <button onclick="removeItem()">remove item</button>
+
 
    
     
@@ -73,10 +72,12 @@ const Http = new XMLHttpRequest();
                 var x = papi[i*3] + " " + papi[(i*3+1)];
                 var y = papi[(i*3+2)];
                 addItem(x, i,y);
-                var but = document.createElement("button");
-                but.innerText = "Buy Product";
+                var num = document.createElement("input");
+                num.setAttribute('type','number');
+                num.setAttribute('id',i);
+                document.getElementById("products").appendChild(num);
+
             }
-            document.getElementById("products").appendChild(but);
 
 
         }
