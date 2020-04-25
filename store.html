@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store</title>
+</head>
+<body>
+    <ul id="products"></ul>
+
+    <input type="text" id="candidate"/>
+    <button onclick="addItem()">add item</button>
+    <button onclick="removeItem()">remove item</button>
+
+   
+    
+    
+    <script>
+function addItem(){
+    var ul = document.getElementById("products");
+    var li = document.createElement("li");
+    li.appendChild(document.createTextNode(candidate.value));
+
+    li.setAttribute('id',candidate.value);
+    ul.appendChild(li);
+
+
+}
+function addItem(x, y){
+    var ul = document.getElementById("products");
+    var li = document.createElement("li");
+    li.setAttribute('id',y);
+    li.appendChild(document.createTextNode(x));
+    ul.appendChild(li);
+
+
+}
+
+function removeItem(){
+    var ul = document.getElementById("dynamic-list");
+    var candidate = document.getElementById("candidate");
+    var item = document.getElementById(candidate.value);
+    ul.removeChild(item);
+}
+function order(){
+    var ord = "Gift Card Visa,5,Beats Headphones,40,Bananas,2";
+    
+}
+
+const Http = new XMLHttpRequest();
+        const url='https://script.google.com/macros/s/AKfycbyQF33yt1msej9kH2zNbfLiX1feCscKoft3w7ifu3njj6fmCA/exec';
+        var data = "?&action=items";
+        Http.open("GET", String(url+data));
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+            ok = Http.responseText;
+            console.log(String(ok));
+            console.log(Http.readyState);
+        if (Http.readyState == 4)
+        {
+            console.log(String(ok));
+            var papi = ok.split(",");
+            for(i = 0; i<papi.length/3;i++){
+                var x = papi[i*3] + " " + papi[(i*3+1)] + " " + papi[(i*3+2)];
+                addItem(x, i);
+                var but = document.createElement("button");
+                but.innerText = "Buy Product";
+            }
+            document.getElementById("products").appendChild(but);
+
+
+        }
+        }
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
