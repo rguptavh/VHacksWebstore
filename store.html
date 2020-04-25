@@ -27,17 +27,26 @@ function addItem(){
 
 
 }
-function addItem(x, y, z){
+function addItem(x, y, z,a){
     var ul = document.getElementById("products");
     var li = document.createElement("li");
-    li.setAttribute('id',y);
-    li.appendChild(document.createTextNode(x));
-    li.classList.add("list-group-item","d-flex","justify-content-between","align-items-center");
+    li.classList.add("list-group-item", "list-group-item-action" ,"flex-column", "align-items-start");
+    var div = document.createElement("div");
+    div.classList.add("d-flex", "w-100");
+    var header = document.createElement("h4");
+    header.appendChild(document.createTextNode(x));
+    header.classList.add("mb-1");
     var span = document.createElement("span");
-    span.classList.add("badge", "badge-primary", "badge-pill");
-    span.setAttribute('id',y+"quantity");
+    span.classList.add("badge", "badge-primary","ml-2");
     span.appendChild(document.createTextNode(""+z));
-    li.appendChild(span);
+    var span2 = document.createElement("span");
+    span2.classList.add("badge", "badge-success","ml-2");
+    span2.appendChild(document.createTextNode("$"+a));
+    header.appendChild(span2);
+    header.appendChild(span);
+    
+    div.appendChild(header);
+    li.appendChild(div)
     ul.appendChild(li);
 
 
@@ -69,9 +78,10 @@ const Http = new XMLHttpRequest();
             console.log(String(ok));
             var papi = ok.split(",");
             for(i = 0; i<papi.length/3;i++){
-                var x = papi[i*3] + " " + papi[(i*3+1)];
+                var x = papi[i*3];
                 var y = papi[(i*3+2)];
-                addItem(x, i,y);
+                var a = papi[(i*3+1)];
+                addItem(x, i,y,a);
                 var num = document.createElement("input");
                 num.setAttribute('type','number');
                 num.setAttribute('id',i);
