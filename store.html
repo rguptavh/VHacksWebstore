@@ -78,6 +78,11 @@ const Http = new XMLHttpRequest();
                 addItem(x, i,y,a);
                 var num = document.createElement("input");
                 num.setAttribute('type','number');
+                num.setAttribute('min','1');
+                num.setAttribute('max',""+y);
+                num.setAttribute('step','1');
+                num.setAttribute('id',i);
+                num.setAttribute("oninput","validity.valid||(value=value.slice(0,value.length-1));")
                 document.getElementById("products").appendChild(num);
 
             }
