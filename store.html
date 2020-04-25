@@ -9,7 +9,7 @@
 </head>
 <body>
     <ul class="list-group" id="products"></ul>
-    <button>Submit Order</button>
+    <button onclick="order()">Submit Order</button>
 
 
 
@@ -17,7 +17,7 @@
     
     
     <script>
-function addItem(){
+/*function addItem(){
     var ul = document.getElementById("products");
     var li = document.createElement("li");
     li.appendChild(document.createTextNode(candidate.value));
@@ -26,7 +26,7 @@ function addItem(){
     ul.appendChild(li);
 
 
-}
+}*/
 function addItem(x, y, z,a){
     var ul = document.getElementById("products");
     var li = document.createElement("li");
@@ -52,16 +52,8 @@ function addItem(x, y, z,a){
 
 }
 
-function removeItem(){
-    var ul = document.getElementById("dynamic-list");
-    var candidate = document.getElementById("candidate");
-    var item = document.getElementById(candidate.value);
-    ul.removeChild(item);
-}
-function order(){
-    var ord = "Gift Card Visa,5,Beats Headphones,40,Bananas,2";
-    
-}
+
+
 
 const Http = new XMLHttpRequest();
         const url='https://script.google.com/macros/s/AKfycbyQF33yt1msej9kH2zNbfLiX1feCscKoft3w7ifu3njj6fmCA/exec';
@@ -77,6 +69,8 @@ const Http = new XMLHttpRequest();
         {
             console.log(String(ok));
             var papi = ok.split(",");
+            localStorage.setItem("itemArr",papi);
+            
             for(i = 0; i<papi.length/3;i++){
                 var x = papi[i*3];
                 var y = papi[(i*3+2)];
@@ -92,6 +86,58 @@ const Http = new XMLHttpRequest();
 
         }
         }
+
+function order(){
+    var ord = "";
+    var total = 0;
+    var uname = sessionStorage.getItem("usernamea");
+    var papi = localStorage.getItem("itemArr").split(",");
+    for(var i = 0; i<papi.length/3;i++){
+        var buy = document.getElementsByTagName("input")[i].value;
+        if(buy!=0 && buy!=""){
+
+            if(buy<=papi[i*3+2]){
+                ord+=papi[i*3]+","+buy+",";
+            }
+            else{
+                alert("Insufficient stock of item to fulfill order. Please resubmit order");
+                break;
+            }
+
+        }
+    }
+    if(ord!=""){
+        const Http = new XMLHttpRequest();
+        const url='https://script.google.com/macros/s/AKfycbyQF33yt1msej9kH2zNbfLiX1feCscKoft3w7ifu3njj6fmCA/exec';
+        var data = "?username="+uname+"&ord="+ord+"&action=order";
+        Http.open("GET", String(url+data));
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+            ok = Http.responseText;
+            console.log(String(ok));
+            console.log(Http.readyState);
+        if (Http.readyState == 4)
+        {
+            console.log(String(ok));
+
+          if(String(ok) == "true"){
+              console.log("truo");
+              alert("Success!");
+            }
+            else{
+              console.log("falso");
+              alert("order failure");
+            }
+        }
+        }
+    }
+    else{
+        alert("No order submitted. Please try again");
+    }
+
+    
+}
     </script>
 
 
