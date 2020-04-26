@@ -5,14 +5,61 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html{
+        height: 100%;
+      }
+      body{
+        font-family: 'Comfortaa', cursive;
+        text-align: center;
+        position: relative;
+        background: rgba(91, 136, 216, 1.0);
+        background: -webkit-linear-gradient(bottom right, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
+        background: -moz-linear-gradient(bottom right, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
+        background: linear-gradient(to top left, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
+        background-repeat: no-repeat;
+      }
+      #mainBod{
+        margin-left:15%;
+        margin-right:15%;
+        font-size: 100%;
+        background-color: whitesmoke;
+        border-radius: 20px;
+        border-style: solid;
+        border-width: 1px;
+        padding: 3%;
+        border-color: gray;
+        box-shadow: 10px 10px 20px slategray;
+      }
+      button:hover{
+        background-color: royalblue;
+      }
+      button{
+        color: white;
+        background-color: dodgerblue;
+        border-radius: 10px;
+        border-style: none;
+        font-size: 85%;
+        padding: 5px;
+
+      }
+      ul{
+        max-height: 300px;
+        margin-bottom: 10px;
+        overflow:scroll;
+      }
+      </style>
     <title>Store</title>
 </head>
 <body>
+    <img class="logo" src="https://s3-alpha-sig.figma.com/img/c09f/c85a/16fc9205d11991c96f3b9db94945fe1a?Expires=1586736000&Signature=AeD7ZBpOVIT004BP9ghGtlkCGYWOyuC8riQJSZ0zSDRvY0txuEW6meZWNwf5Xrt7AWF9tdwF6sucQh7reuSBzWSf0sCjb84FwrrTJrXBXWqkh0r6yEO0gUfp5xaOvh-AwzDiVGXgxkKTujmpVaDvbIFJDgZ8ITjhxaekb59tzssFuh~Gc4Dy-sacxmcJLBmpEpM9mHXPkFhU8wzC-OvXTsac7QbMuf7KrCzYXImyzjdKAsIVKExkSRku8gF~MrI9U~iaDbzilC1ygEzl42y7~OrQ17TOdS2x8Y7fZT4004eL0Gsy9oJxuOt4znoCssZ0GHemHzXQGekBDbeqVmhs3g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
+    <a href = "profile.html" id = "profile">View Orders</a>
+    <div id="mainBod" >
     <ul class="list-group" id="products"></ul>
     <button id= "order" onclick="order()">Submit Order</button>
     <p id = "balance"><script>document.getElementById("balance").textContent = "Balance: "+sessionStorage.getItem("balance")</script></p>
     <p id = "total">Total: 0</p>
-
+</div>
 
 
    
