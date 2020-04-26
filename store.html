@@ -9,7 +9,7 @@
 </head>
 <body>
     <ul class="list-group" id="products"></ul>
-    <button onclick="order()">Submit Order</button>
+    <button id= "order" onclick="order()">Submit Order</button>
     <p id = "balance"><script>document.getElementById("balance").textContent = "Balance: "+sessionStorage.getItem("balance")</script></p>
     <p id = "total">Total: 0</p>
 
@@ -106,6 +106,12 @@ function addItem(x, y, z,a){
                     }
         }
         document.getElementById("total").textContent = "Total: " + total;
+        if (total>bal){
+            document.getElementById("order").disabled = true;
+        }
+        else{
+            document.getElementById("order").disabled = false;
+        }
         }
 
 function order(){
