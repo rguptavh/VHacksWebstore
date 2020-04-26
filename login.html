@@ -103,7 +103,9 @@
     </div>
   
     <script>
-      
+        
+    var a = "";
+    localStorage.setItem("itemArr",a);
       document.getElementById("login").addEventListener("click",logIn);
       var ok = false;
       var usernamea = "";
@@ -123,7 +125,6 @@
 
         Http.onreadystatechange = (e) => {
             ok = Http.responseText;
-            console.log(String(ok));
             console.log(Http.readyState);
         if (Http.readyState == 4)
         {
@@ -131,9 +132,21 @@
             ok = ok.split(",");
           if(String(ok[0]) == "true"){
               console.log("truo");
+              var baby = [];
+              for( i = 2; i<ok.length;i++){
+                  baby.push(ok[i]);
+              }
+
+
+              localStorage.setItem('itemArr',baby);
               alert("Success!");
                sessionStorage.setItem("usernamea",uname);
+
+               sessionStorage.setItem("balance",String[ok[1]]);
+               
+
                sessionStorage.setItem("balance",String(ok[1]));
+
                window.location = "store.html";
             }
             else{
