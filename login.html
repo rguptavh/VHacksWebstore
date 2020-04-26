@@ -110,18 +110,6 @@
       var ok = false;
       var usernamea = "";
       sessionStorage.setItem("usernamea", usernamea);
-      function callback(val) {
-        if(val){
-         alert("Success!");
-         document.getElementById("cont").disabled = false;
-
-          
-
-        } else {
-          alert("failed login");
-          
-        }
-      }
       
 
 
@@ -153,8 +141,12 @@
               localStorage.setItem('itemArr',baby);
               alert("Success!");
                sessionStorage.setItem("usernamea",uname);
+
                sessionStorage.setItem("balance",String[ok[1]]);
                
+
+               sessionStorage.setItem("balance",String(ok[1]));
+
                window.location = "store.html";
             }
             else{

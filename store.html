@@ -10,6 +10,8 @@
 <body>
     <ul class="list-group" id="products"></ul>
     <button onclick="order()">Submit Order</button>
+    <p id = "balance"><script>document.getElementById("balance").textContent = "Balance: "+sessionStorage.getItem("balance")</script></p>
+    <p id = "total">Total: 0</p>
 
 
 
@@ -82,18 +84,34 @@ function addItem(x, y, z,a){
                 num.setAttribute('max',""+y);
                 num.setAttribute('step','1');
                 num.setAttribute('id',i);
-                num.setAttribute("oninput","validity.valid||(value=value.slice(0,value.length-1));")
+                num.setAttribute("oninput","validity.valid||(value=value.slice(0,value.length-1)); settotal();")
                 document.getElementById("products").appendChild(num);
 
             }
 
 
+
       //  }
         //}
+
+
+        function settotal(){
+            var papi = localStorage.getItem("itemArr").split(",");
+            var total = 0;
+            var bal = parseInt(sessionStorage.getItem("balance"))
+                for(var i = 0; i<papi.length/3;i++){
+                    var buy = document.getElementsByTagName("input")[i].value;
+                    if(buy>0 && buy!=""){
+                        total += buy*parseInt(papi[i*3+1]);
+                    }
+        }
+        document.getElementById("total").textContent = "Total: " + total;
+        }
 
 function order(){
     var ord = "";
     var total = 0;
+    var bal = parseInt(sessionStorage.getItem("balance"))
     var uname = sessionStorage.getItem("usernamea");
     var papi = localStorage.getItem("itemArr").split(",");
     for(var i = 0; i<papi.length/3;i++){
@@ -102,10 +120,16 @@ function order(){
         if(buy>0 && buy!=""){
 
             if(buy<=parseInt(papi[i*3+2])){
+                total += buy*parseInt(papi[i*3+1]);
+                if (total<=bal){
                 ord+=papi[i*3]+","+buy+",";
+                }
+                else{
+                    alert('Insufficient Balance');
+                }
             }
             else{
-                alert("Insufficient stock of item to fulfill order. Please resubmit order");
+                alert("Insufficient stock of " + papi[i*3]+ " to fulfill order. Please resubmit order");
                 ord = "";
                 break;
             }
@@ -133,9 +157,9 @@ function order(){
               console.log("truo");
               alert("Success!");
             }
-            else{
+            else if (String(ok[1]) == 'INV'){
               console.log("falso");
-              alert("order failure");
+              alert("Sorry, one or more of your items does not have enough stock. This can happen if someone else places an order while this page is open.");
             }
         }
         }
