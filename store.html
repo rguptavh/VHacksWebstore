@@ -55,7 +55,7 @@ function addItem(x, y, z,a){
 
 
 
-const Http = new XMLHttpRequest();
+/*const Http = new XMLHttpRequest();
         const url='https://script.google.com/macros/s/AKfycbyQF33yt1msej9kH2zNbfLiX1feCscKoft3w7ifu3njj6fmCA/exec';
         var data = "?&action=items";
         Http.open("GET", String(url+data));
@@ -66,8 +66,8 @@ const Http = new XMLHttpRequest();
             console.log(String(ok));
             console.log(Http.readyState);
         if (Http.readyState == 4)
-        {
-
+        {*/
+            ok = localStorage.getItem('itemArr');
             var papi = ok.split(",");
             localStorage.setItem("itemArr",papi);
             
@@ -88,8 +88,8 @@ const Http = new XMLHttpRequest();
             }
 
 
-        }
-        }
+      //  }
+        //}
 
 function order(){
     var ord = "";
