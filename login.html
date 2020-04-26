@@ -140,8 +140,8 @@
         if (Http.readyState == 4)
         {
             console.log(String(ok));
-
-          if(String(ok) == "true"){
+            ok = ok.split(",");
+          if(String(ok[0]) == "true"){
               console.log("truo");
               alert("Success!");
                sessionStorage.setItem("usernamea",uname);
