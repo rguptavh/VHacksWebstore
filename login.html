@@ -125,7 +125,7 @@
 
         Http.onreadystatechange = (e) => {
             ok = Http.responseText;
-            console.log(Http.readyState);
+            console.log(ok);
         if (Http.readyState == 4)
         {
             console.log(String(ok));
@@ -136,14 +136,11 @@
               for( i = 2; i<ok.length;i++){
                   baby.push(ok[i]);
               }
-
-
-              localStorage.setItem('itemArr',baby);
+              console.log(ok.toString())
+              console.log(baby.toString())
+              sessionStorage.setItem('itemArr',baby.toString());
               alert("Success!");
                sessionStorage.setItem("usernamea",uname);
-
-               sessionStorage.setItem("balance",String[ok[1]]);
-               
 
                sessionStorage.setItem("balance",String(ok[1]));
 

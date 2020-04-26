@@ -69,7 +69,7 @@ function addItem(x, y, z,a){
             console.log(Http.readyState);
         if (Http.readyState == 4)
         {*/
-            ok = localStorage.getItem('itemArr');
+            ok = sessionStorage.getItem('itemArr');
             var papi = ok.split(",");
             localStorage.setItem("itemArr",papi);
             
