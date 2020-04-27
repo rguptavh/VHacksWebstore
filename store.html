@@ -63,6 +63,7 @@
       }
       #menu{
           flex:1;
+          justify-content: space-between;
       }
       #bottom{
           flex:1;
@@ -86,6 +87,9 @@
       #balance{
         margin-top: 0 ;
         margin-bottom: 0 ;
+      }
+      .litem{
+          align-items: center;
       }
       </style>
     <title>Store</title>
@@ -120,7 +124,7 @@ function addItem(x, y, z,a){
     var li = document.createElement("li");
     li.classList.add("list-group-item", "list-group-item-action" ,"flex-column", "align-items-start");
     var div = document.createElement("div");
-    div.classList.add("d-flex", "w-100");
+    div.classList.add("d-flex", "w-100", "litem");
     var header = document.createElement("h2");
     header.appendChild(document.createTextNode(x));
     header.classList.add("mb-1");
@@ -142,7 +146,7 @@ function addItem(x, y, z,a){
     num.setAttribute("oninput","validity.valid||(value=value.slice(0,value.length-1)); settotal();")
     document.getElementById("products").appendChild(num);
     var div2 = document.createElement("div");
-    div2.classList.add("d-flex", "w-100");
+    div2.classList.add("d-flex", "w-100","litem");
     var header2 = document.createElement("h5");
     header2.appendChild(document.createTextNode("Quantity Desired:"));
     header2.classList.add("mb-1","mt-1");
