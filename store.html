@@ -207,7 +207,16 @@ function addItem(x, y, z,a){
 
 }
 
-
+function addItem2(){
+  var ul = document.getElementById("products");
+    var li = document.createElement("li");
+    li.classList.add("list-group-item", "list-group-item-action" ,"flex-column", "align-items-start");
+    var header = document.createElement("h2");
+    header.appendChild(document.createTextNode("No Items Left"));
+    document.getElementById("order").disabled = true;
+    li.appendChild(header);
+    ul.appendChild(li);
+}
 
 
 /*const Http = new XMLHttpRequest();
@@ -230,6 +239,7 @@ function addItem(x, y, z,a){
       }
       else{
             ok = sessionStorage.getItem('itemArr');
+            if (ok.length!=""){
             var papi = ok.split(",");
             localStorage.setItem("itemArr",papi);
             
@@ -240,6 +250,10 @@ function addItem(x, y, z,a){
                 addItem(x, i,y,a);
 
 
+            }
+            }
+            else{
+              addItem2();
             }
         }
       }
