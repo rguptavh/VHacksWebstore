@@ -10,7 +10,7 @@
         height: 100%;
       }
       body{
-        font-family: 'Comfortaa', cursive;
+        font-family: 'Comfortaa';
         text-align: center;
         position: relative;
         height: 100%;
@@ -38,6 +38,8 @@
         border-color: gray;
         box-shadow: 10px 10px 20px slategray;
         overflow: hidden;
+        display:flex;
+        flex-direction: column;
       }
       button:hover{
         background-color: royalblue;
@@ -47,12 +49,15 @@
         background-color: dodgerblue;
         border-radius: 15px;
         border-style: none;
-        font-size: 200%;
+        font-size: 3vmin;
+        height:5vh;
 
       }
+      #buttoncont{
+        flex:1;
+      }
       ul{
-        max-height: 80%;
-        
+        flex:8;
         overflow:hidden; 
         overflow-y:scroll;
       }
@@ -70,17 +75,17 @@
       }
       #info{
           justify-content: center;
-          font-size: 150%;
-          height:10%;
+          font-size: 2.5vh;
           overflow: hidden;
+          flex:1;
       }
       #total{
         margin-top: 0 ;
-  margin-bottom: 0 ;
+        margin-bottom: 0;
       }
       #balance{
         margin-top: 0 ;
-  margin-bottom: 0 ;
+        margin-bottom: 0 ;
       }
       </style>
     <title>Store</title>
@@ -91,7 +96,7 @@
     <a href = "history.html" id = "profile">View Orders</a></div>
     <div id="mainBod" >
     <ul class="list-group" id="products"></ul>
-    <button id= "order" onclick="order()">Submit Order</button>
+    <div id = "buttoncont"><button id= "order" onclick="order()">Submit Order</button></div>
     <div id = "info"><p id = "balance"><script>document.getElementById("balance").textContent = "Balance: "+sessionStorage.getItem("balance")</script></p><p id = "total">Order Total: 0</p></div>
 </div>
 <div id = "bottom"></div>
