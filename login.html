@@ -11,10 +11,14 @@
       }
     body{
       font-family: 'Orienta', open sans;
+      background: #BE93C5;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #7BC6CC, #BE93C5);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/*
       background: rgba(91, 136, 216, 1.0);
       background: -webkit-linear-gradient(bottom right, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
       background: -moz-linear-gradient(bottom right, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
-      background: linear-gradient(to top left, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
+      background: linear-gradient(to top left, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));*/
       height: 100%;
       font-size: 3vmin;
     }
@@ -47,7 +51,7 @@
     button{
       padding: 2%;
       font-size: 3vmin;
-      background-color: dodgerblue;
+      background-color: rgb(155, 163, 235);
       border-radius: 25px;
       border-style: none;
       color: whitesmoke;
@@ -94,10 +98,10 @@
         <p>Welcome winners! Please login with email and Student ID #</p>
       </div>
       <div class = "item2">
-        <label id="usrLabel">Username: </label><br><input type ="text" id = "username">
+        <label id="usrLabel">Email: </label><br><input type ="text" id = "username">
         <br>
         <br>
-        <label>Password: </label><br><input type ="password" id = "password">
+        <label>Student ID#: </label><br><input type ="password" id = "password">
         <br>
         <br>
         <button id = "login">LOGIN</button>
