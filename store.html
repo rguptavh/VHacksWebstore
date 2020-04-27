@@ -3,6 +3,8 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Orienta&display=swap" rel="stylesheet">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -10,14 +12,19 @@
         height: 100%;
       }
       body{
-        font-family: 'Comfortaa';
+        font-family: 'Orienta', open sans;
         text-align: center;
         position: relative;
         height: 100%;
+        background: #BE93C5;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, rgb(117, 160, 218), #BE93C5);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, rgb(117, 160, 218), #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        /*
         background: rgba(91, 136, 216, 1.0);
         background: -webkit-linear-gradient(bottom right, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
         background: -moz-linear-gradient(bottom right, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
-        background: linear-gradient(to top left, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
+        background: linear-gradient(to top left, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));*/
         background-repeat: no-repeat;
         display:flex;
         flex-direction: column;
@@ -46,13 +53,16 @@
       }
       button{
         color: white;
-        background-color: dodgerblue;
+        background-color: rgb(155, 163, 235);
         border-radius: 12px;
         border-style: none;
         font-size: 3vmin;
         height:5vh;
 
       }
+      button:hover{
+      background-color: royalblue;
+    }
       #buttoncont{
         flex:1;
       }
@@ -101,14 +111,18 @@
       a:link{
         text-decoration: none;
         padding: 7px;
-        background-color: dodgerblue;
+        background-color: rgb(176, 118, 223);
         border-radius: 10px;
         color: white;
       }
       a:visited {
         color: white;
-        background-color: dodgerblue;
+        background-color: rgb(176, 118, 223);
         text-decoration: none;
+        }
+        a:hover{
+            background-color: royalblue;
+
         }
       #logout{
           width: 10vw;
@@ -117,6 +131,11 @@
       #profile{
         font-size:1.2vw;
         width: 10vw;
+        background-color: rgb(91, 131, 241);
+      }
+      #profile:hover{
+        background-color: royalblue;
+
       }
       </style>
     <title>Store</title>
