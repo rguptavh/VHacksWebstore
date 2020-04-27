@@ -47,7 +47,7 @@
       button{
         color: white;
         background-color: dodgerblue;
-        border-radius: 15px;
+        border-radius: 12px;
         border-style: none;
         font-size: 3vmin;
         height:5vh;
@@ -63,7 +63,13 @@
       }
       #menu{
           flex:1;
+          display:flex;
+          flex-direction: row;
           justify-content: space-between;
+          width:100%;
+          padding-left:15%;
+          align-items: center;
+          padding-right:15%;
       }
       #bottom{
           flex:1;
@@ -90,13 +96,34 @@
       }
       .litem{
           align-items: center;
+          vertical-align: middle;
+      }
+      a:link{
+        text-decoration: none;
+        padding: 7px;
+        background-color: dodgerblue;
+        border-radius: 10px;
+        color: white;
+      }
+      a:visited {
+        color: white;
+        background-color: dodgerblue;
+        text-decoration: none;
+        }
+      #logout{
+          width: 10vw;
+          font-size:1.2vw;
+      }
+      #profile{
+        font-size:1.2vw;
+        width: 10vw;
       }
       </style>
     <title>Store</title>
 </head>
 <body>
     <div id = "menu">
-    <img class="logo" src="https://s3-alpha-sig.figma.com/img/c09f/c85a/16fc9205d11991c96f3b9db94945fe1a?Expires=1586736000&Signature=AeD7ZBpOVIT004BP9ghGtlkCGYWOyuC8riQJSZ0zSDRvY0txuEW6meZWNwf5Xrt7AWF9tdwF6sucQh7reuSBzWSf0sCjb84FwrrTJrXBXWqkh0r6yEO0gUfp5xaOvh-AwzDiVGXgxkKTujmpVaDvbIFJDgZ8ITjhxaekb59tzssFuh~Gc4Dy-sacxmcJLBmpEpM9mHXPkFhU8wzC-OvXTsac7QbMuf7KrCzYXImyzjdKAsIVKExkSRku8gF~MrI9U~iaDbzilC1ygEzl42y7~OrQ17TOdS2x8Y7fZT4004eL0Gsy9oJxuOt4znoCssZ0GHemHzXQGekBDbeqVmhs3g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
+        <a href = "history.html" id = "logout">Logout</a>
     <a href = "history.html" id = "profile">View Orders</a></div>
     <div id="mainBod" >
     <ul class="list-group" id="products"></ul>
@@ -216,6 +243,7 @@ function addItem(x, y, z,a){
         }
 
 function order(){
+    document.getElementById("order").disabled = true;
     var ord = "";
     var total = 0;
     var bal = parseInt(sessionStorage.getItem("balance"))
@@ -268,14 +296,15 @@ function order(){
               console.log("falso");
               alert("Sorry, one or more of your items does not have enough stock. This can happen if someone else places an order while this page is open.");
             }
+            document.getElementById("order").disabled = false;
         }
         }
     }
     else{
         alert("No order submitted. Please try again");
+        document.getElementById("order").disabled = false;
     }
 
-    
 }
     </script>
 
