@@ -142,7 +142,7 @@
 </head>
 <body>
     <div id = "menu">
-        <a href = "history.html" id = "logout">Logout</a>
+        <a href = "login.html" id = "logout">Logout</a>
     <a href = "history.html" id = "profile">View Orders</a></div>
     <div id="mainBod" >
     <ul class="list-group" id="products"></ul>
@@ -221,6 +221,12 @@ function addItem(x, y, z,a){
             console.log(Http.readyState);
         if (Http.readyState == 4)
         {*/
+    var username_sec = sessionStorage.getItem("usernamea");
+      if(username_sec==null || username_sec==''){
+        alert(username_sec+"Not an authorized user. Please login with an authorized account ");
+        window.location = "login.html";
+      }
+      else{
             ok = sessionStorage.getItem('itemArr');
             var papi = ok.split(",");
             localStorage.setItem("itemArr",papi);
@@ -233,7 +239,7 @@ function addItem(x, y, z,a){
 
 
             }
-
+      }
 
 
       //  }
