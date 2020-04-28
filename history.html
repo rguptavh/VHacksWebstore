@@ -295,6 +295,30 @@
 
     </div>
     <script>
+        var uname = sessionStorage.getItem('usernamea');
+        function reqChange(){
+            var message = document.getElementById("message").value;
+            var name = document.getElementById("name").value;
+            var emailReply = document.getElementById("email").value;
+
+            const Http = new XMLHttpRequest();
+            const url='https://script.google.com/macros/s/AKfycbyQF33yt1msej9kH2zNbfLiX1feCscKoft3w7ifu3njj6fmCA/exec';
+            var data = "?message="+message+"&name="+name+"&reply="+emailReply+"&action=change";
+            Http.open("GET", String(url+data));
+            Http.send();
+
+            Http.onreadystatechange = (e) => {
+
+            if (Http.readyState == 4)
+            {
+            alert('Email sent succesfully!');
+            document.getElementById("message").value = "";
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";   
+            }
+        }
+    }
+            
         var modal = document.getElementById("myModal");
         var modal2 = document.getElementById("container");
         // Get the button that opens the modal
@@ -304,6 +328,8 @@
         // When the user clicks the button, open the modal 
         btn.onclick = function () {
             modal.style.display = "block";
+            document.getElementById('email').value = uname;
+
         }
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
