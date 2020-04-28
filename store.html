@@ -340,6 +340,7 @@ function order(){
               var itemizer = [];
               var history = [];
               for( i = 2; i<ok.length;i++){
+                if(ok[i]!=""){
                 if(!isNaN(ok[i])){
                     itemizer.push(ok[i]);
 
@@ -357,6 +358,7 @@ function order(){
                 else{
                     itemizer.push(ok[i]);
 
+                }
                 }
               }
               sessionStorage.setItem('balance',String(ok[1]));      
