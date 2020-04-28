@@ -18,10 +18,10 @@
             position: relative;
             height: 100%;
             font-size: 200%;
-            background: rgba(91, 136, 216, 1.0);
-            background: -webkit-linear-gradient(bottom right, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
-            background: -moz-linear-gradient(bottom right, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
-            background: linear-gradient(to top left, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
+            background: #BE93C5;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, rgb(117, 160, 218), #BE93C5);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, rgb(117, 160, 218), #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
             display: flex;
             flex-direction: column;
         }
@@ -131,28 +131,20 @@
             cursor: pointer;
         }
 
-        .myBtn {
-            padding: 1%;
-            font-size: 100%;
-            background-color: dodgerblue;
-            border-radius: 10px;
-            border-style: none;
-            color: whitesmoke;
-        }
-        #myBtn{
-            flex:2;
-        }
-        .myBtn:hover {
-            background-color: royalblue;
-        }
 
         #myBtn {
             padding: 1%;
             font-size: 5vmin;
-            background-color: dodgerblue;
+            background-color: rgb(155, 163, 235);
             border-radius: 10px;
             border-style: none;
             color: whitesmoke;
+            flex:2;
+        }
+
+
+        #myBtn:hover{
+            background-color: royalblue;
         }
 
         #name {
@@ -276,6 +268,11 @@
                 </div>
             </div>
         </div>
+
+        <div class="item" id="past-log">
+            <p style = "font-size: 200%;" >Past Logs:</p>
+            <p id = 'history'></p>
+
         <div class="item" id = "button">
             <button id="myBtn">Request Change</button>
 
@@ -284,6 +281,13 @@
             <p style = "font-size: 200%;">Past Logs:</p>
             <div id = "logs"></div>
         </div>
+        <div class="item" id = "button">
+            <button id="myBtn">Request Change</button>
+
+        </div>
+    </div>
+    <div id="bottom">
+
     </div>
     <div id="bottom">
 
@@ -309,6 +313,15 @@
                 modal.style.display = "none";
             }
         }
+        var hist = document.getElementById('history');
+        var papi = sessionStorage.getItem('history').split(',');
+        console.log(papi[1]);
+        for(i = 0;i<papi.length;i++){
+            hist.innerHTML+=papi[i]+"<br>";
+            console.log(papi[i]);
+        }
+
+
     </script>
 </body>
 

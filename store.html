@@ -338,16 +338,35 @@ function order(){
               console.log("truo");
               alert("Success!");
               var itemizer = [];
+              var history = [];
               for( i = 2; i<ok.length;i++){
-                  itemizer.push(ok[i]);
-              }   
+                if(!isNaN(ok[i])){
+                    itemizer.push(ok[i]);
+
+                }
+                else if(ok[i].length>=7){
+                    if(ok[i].substring(0,7)!='Product'){
+                        itemizer.push(ok[i]);
+
+                    }
+                    else{
+                        history.push(ok[i]);
+                    }
+
+                }
+                else{
+                    itemizer.push(ok[i]);
+
+                }
+              }
               sessionStorage.setItem('balance',String(ok[1]));      
               sessionStorage.setItem('itemArr',itemizer);
+              sessionStorage.setItem('history',history.toString());
               document.getElementById("products").innerHTML = '';
               loadPage();
               settotal();
 
-            console.log(localStorage.getItem('itemArr'));
+            console.log(sessionStorage.getItem('history'));
             }
             else if (String(ok[0]) == 'INV'){
               console.log("falso");
