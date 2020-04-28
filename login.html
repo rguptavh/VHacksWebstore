@@ -142,6 +142,7 @@ background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, F
               var baby = [];
               var history = [];
               for( i = 2; i<ok.length;i++){
+                if(ok[i]!=""){
                 if(!isNaN(ok[i])){
                     baby.push(ok[i]);
 
@@ -159,6 +160,7 @@ background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, F
                 else{
                     baby.push(ok[i]);
 
+                }
                 }
               }
               console.log(ok.toString());
