@@ -1,11 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Comfortaa', cursive;
+            font-size: 200%;
+            background: rgba(91, 136, 216, 1.0);
+            background: -webkit-linear-gradient(bottom right, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
+            background: -moz-linear-gradient(bottom right, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
+            background: linear-gradient(to top left, rgba(91, 136, 216, 1.0), rgba(224, 215, 208, 1.0));
+        }
+
+        .logo {
+            margin-top: 10px;
+            margin-left: 15%;
+            position: fixed;
+            content-align: center;
+            width: 40px;
+        }
+
+        .mainBod {
+            text-wrap: wrap;
+            margin-top: 30px;
+            font-size: 80%;
+            border-radius: 20px;
+            margin-left: 15%;
+            margin-right: 15%;
+            background-color: whitesmoke;
+            position: relative;
+            text-align: center;
+            padding: 3%;
+            border-style: solid;
+            border-color: gray;
+            border-width: 1px;
+            box-shadow: 10px 10px 20px slategray;
+            display: grid;
+            grid-template-columns: auto auto auto;
+        }
+
+        a:link {
+            margin-left: 80%;
+            text-decoration: none;
+            padding: .35%;
+            font-size: 75%;
+            background-color: dodgerblue;
+            border-radius: 10px;
+            color: whitesmoke;
+        }
+
+        a:hover {
+            background-color: royalblue;
+        }
+
+        #totalHours {
+            padding: 5px;
+            background-color: rgba(220, 220, 220, 0.75);
+            border-radius: 10px;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        #eComments {
+            padding: 5px;
+            background-color: rgba(220, 220, 220, 0.75);
+            border-radius: 10px;
+            margin-left: 5%;
+        }
+
+        #income {
+            padding: 5px;
+            background-color: rgba(220, 220, 220, 0.75);
+            border-radius: 10px;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        #past-log {
+            padding: 5px;
+            background-color: rgba(220, 220, 220, 0.75);
+            border-radius: 10px;
+            margin-left: 10%;
+        }
+
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: whitesmoke;
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            border-radius: 10px;
+            padding: 1%;
+            background-color: #fefefe;
+            margin: auto;
+            border: 1px solid;
+            width: 50%;
+        }
+
+        /* The Close Button */
+        .close {
+            margin-left: 75%;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .myBtn {
+            padding: 1%;
+            font-size: 100%;
+            background-color: dodgerblue;
+            border-radius: 10px;
+            border-style: none;
+            color: whitesmoke;
+        }
+
+        .myBtn:hover {
+            background-color: royalblue;
+        }
+
+        #myBtn {
+            padding: 2%;
+        }
+
+        #name {
+            background-color: rgba(220, 220, 220, 0.75);
+            padding: 1.5%;
+            border-radius: 15px;
+            border-style: none;
+            border-width: 1px;
+        }
+
+        #email {
+            background-color: rgba(220, 220, 220, 0.75);
+            padding: 1.5%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            border-radius: 15px;
+            border-style: none;
+            border-width: 1px;
+        }
+
+        #message {
+            background-color: rgba(220, 220, 220, 0.75);
+            padding: 1.5%;
+            margin-bottom: 2%;
+            border-radius: 15px;
+            border-style: none;
+            border-width: 1px;
+        }
+
+        #empemail {
+            background-color: rgba(220, 220, 220, 0.75);
+            padding: 1.5%;
+            margin-bottom: 3%;
+            border-radius: 15px;
+            border-style: none;
+            border-width: 1px;
+        }
+
+        ::placeholder {
+            color: rgba(50, 50, 50, 1);
+        }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History</title>
+    <title>Profile</title>
 </head>
+
 <body>
-    
+    <p></p>
+    <img class="logo"
+        src="https://s3-alpha-sig.figma.com/img/c09f/c85a/16fc9205d11991c96f3b9db94945fe1a?Expires=1586736000&Signature=AeD7ZBpOVIT004BP9ghGtlkCGYWOyuC8riQJSZ0zSDRvY0txuEW6meZWNwf5Xrt7AWF9tdwF6sucQh7reuSBzWSf0sCjb84FwrrTJrXBXWqkh0r6yEO0gUfp5xaOvh-AwzDiVGXgxkKTujmpVaDvbIFJDgZ8ITjhxaekb59tzssFuh~Gc4Dy-sacxmcJLBmpEpM9mHXPkFhU8wzC-OvXTsac7QbMuf7KrCzYXImyzjdKAsIVKExkSRku8gF~MrI9U~iaDbzilC1ygEzl42y7~OrQ17TOdS2x8Y7fZT4004eL0Gsy9oJxuOt4znoCssZ0GHemHzXQGekBDbeqVmhs3g__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
+    <a href="log.html">Logging Page</a>
+    <br>
+    <br>
+
+    <div class="mainBod">
+        <div class="item">
+            <button class="myBtn" id="myBtn">Request Change</button>
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <input type="text" id="name" placeholder="Your Name"><br>
+                    <input type="email" id="email" placeholder="Your E-Mail"><br>
+                    <input type="text" id="message" placeholder="Your Message"><br>
+                    <input type="email" id="empemail" placeholder="Your Employer's Email"><br>
+                    <button class="myBtn" onclick="reqChange()">Request Change</button>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="item" id="past-log">
+            <p>Past Logs:</p>
+            <p class="item" id="pastLog"></p>
+        </div>
+    </div>
+    <script>
+        var modal = document.getElementById("myModal");
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        // When the user clicks the button, open the modal 
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
+
 </html>
