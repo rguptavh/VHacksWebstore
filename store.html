@@ -239,7 +239,8 @@ function addItem2(){
       }
       else{
             ok = sessionStorage.getItem('itemArr');
-            if (ok.length!=""){
+            console.log(ok)
+            if (String(ok)!=""){
             var papi = ok.split(",");
             localStorage.setItem("itemArr",papi);
             
@@ -337,20 +338,47 @@ function order(){
               console.log("truo");
               alert("Success!");
               var itemizer = [];
+              var history = [];
               for( i = 2; i<ok.length;i++){
-                  itemizer.push(ok[i]);
+                if(!isNaN(ok[i])){
+                    itemizer.push(ok[i]);
+
+                }
+                else if(ok[i].length>=7){
+                    if(ok[i].substring(0,7)!='Product'){
+                        itemizer.push(ok[i]);
+
+                    }
+                    else{
+                        history.push(ok[i]);
+                    }
+
+                }
+                else{
+                    itemizer.push(ok[i]);
+
+                }
               }
-              sessionStorage.setItem('balance',String(ok[1]));          
+              sessionStorage.setItem('balance',String(ok[1]));      
               sessionStorage.setItem('itemArr',itemizer);
+              sessionStorage.setItem('history',history.toString());
               document.getElementById("products").innerHTML = '';
               loadPage();
               settotal();
 
-            console.log(localStorage.getItem('itemArr'));
+            console.log(sessionStorage.getItem('history'));
             }
-            else if (String(ok[1]) == 'INV'){
+            else if (String(ok[0]) == 'INV'){
               console.log("falso");
-              alert("Sorry, one or more of your items does not have enough stock. This can happen if someone else places an order while this page is open.");
+              alert("Sorry, one or more of your items does not have enough stock. This can happen if someone else places an order while this page is open. The inventory amounts have been refreshed.");
+              var itemizer = [];
+              for( i = 1; i<ok.length;i++){
+                  itemizer.push(ok[i]);
+              }      
+              sessionStorage.setItem('itemArr',itemizer);
+              document.getElementById("products").innerHTML = '';
+              loadPage();
+              settotal();
             }
             document.getElementById("order").disabled = false;
         }

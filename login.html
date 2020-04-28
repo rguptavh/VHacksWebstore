@@ -123,6 +123,7 @@ background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, F
       function logIn(){
         var uname = document.getElementById("username").value;
         var pword = document.getElementById("password").value;
+        document.getElementById("login").disabled = true;
         const Http = new XMLHttpRequest();
         const url='https://script.google.com/macros/s/AKfycbyQF33yt1msej9kH2zNbfLiX1feCscKoft3w7ifu3njj6fmCA/exec';
         var data = "?username="+uname+"&password="+pword+"&action=login";
@@ -139,12 +140,33 @@ background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, F
           if(String(ok[0]) == "true"){
               console.log("truo");
               var baby = [];
+              var history = [];
               for( i = 2; i<ok.length;i++){
-                  baby.push(ok[i]);
+                if(!isNaN(ok[i])){
+                    baby.push(ok[i]);
+
+                }
+                else if(ok[i].length>=7){
+                    if(ok[i].substring(0,7)!='Product'){
+                        baby.push(ok[i]);
+
+                    }
+                    else{
+                        history.push(ok[i]);
+                    }
+
+                }
+                else{
+                    baby.push(ok[i]);
+
+                }
               }
-              console.log(ok.toString())
-              console.log(baby.toString())
+              console.log(ok.toString());
+              console.log(baby.toString());
+              console.log(history.toString());
+
               sessionStorage.setItem('itemArr',baby.toString());
+              sessionStorage.setItem('history',history.toString());
               alert("Success!");
                sessionStorage.setItem("usernamea",uname);
 
@@ -156,6 +178,7 @@ background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, F
               console.log("falso");
               alert("failed login");
             }
+            document.getElementById("login").disabled = false;
         }
         }
         
