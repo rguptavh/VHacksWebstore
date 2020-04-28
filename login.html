@@ -123,6 +123,7 @@ background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, F
       function logIn(){
         var uname = document.getElementById("username").value;
         var pword = document.getElementById("password").value;
+        document.getElementById("login").disabled = true;
         const Http = new XMLHttpRequest();
         const url='https://script.google.com/macros/s/AKfycbyQF33yt1msej9kH2zNbfLiX1feCscKoft3w7ifu3njj6fmCA/exec';
         var data = "?username="+uname+"&password="+pword+"&action=login";
@@ -156,6 +157,7 @@ background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, F
               console.log("falso");
               alert("failed login");
             }
+            document.getElementById("login").disabled = false;
         }
         }
         
