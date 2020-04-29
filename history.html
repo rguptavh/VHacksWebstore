@@ -17,9 +17,12 @@
             text-align: center;
             height: 100%;
             font-size: 200%;
-            background: #BE93C5;  /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, rgb(117, 160, 218), #BE93C5);  /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, rgb(117, 160, 218), #BE93C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: #BE93C5;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, rgb(117, 160, 218), #BE93C5);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, rgb(117, 160, 218), #BE93C5);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
             display: flex;
             flex-direction: column;
@@ -36,16 +39,16 @@
             text-align: center;
             padding-left: 3%;
             padding-right: 3%;
-            padding-top:2%;
+            padding-top: 2%;
             padding-bottom: 2%;
             border-style: solid;
             border-color: gray;
             border-width: 1px;
             box-shadow: 10px 10px 20px slategray;
             flex: 10;
-            display:flex;
+            display: flex;
             flex-direction: column;
-            flex-grow:10;
+            flex-grow: 10;
             min-height: 0;
         }
 
@@ -78,10 +81,10 @@
             padding-bottom: 1%;
             background-color: rgba(220, 220, 220, 0.75);
             border-radius: 10px;
-            flex:5;
+            flex: 5;
             display: flex;
             flex-direction: column;
-            flex-grow:5;
+            flex-grow: 5;
             min-height: 0;
         }
 
@@ -107,7 +110,7 @@
 
         /* Modal Content */
         .modal-content {
-            display:flex;
+            display: flex;
             flex-direction: column;
             border-radius: 10px;
             padding: 1%;
@@ -121,7 +124,7 @@
         /* The Close Button */
         .close {
             margin-left: 98%;
-            margin-bottom:1%;
+            margin-bottom: 1%;
             font-size: 28px;
             font-weight: bold;
         }
@@ -140,12 +143,12 @@
             border-radius: 10px;
             border-style: none;
             color: whitesmoke;
-            flex:2;
+            flex: 2;
             margin-top: 7%;
 
         }
 
-        .myBtn{
+        .myBtn {
             padding: 1%;
             font-size: 100%;
             background-color: rgb(155, 163, 235);
@@ -153,7 +156,8 @@
             border-style: none;
             color: whitesmoke;
         }
-        #myBtn:hover{
+
+        #myBtn:hover {
             background-color: royalblue;
         }
 
@@ -229,38 +233,45 @@
         #bottom {
             flex: 1;
         }
-    
-      a:link{
-        text-decoration: none;
-        padding: 7px;
-        background-color: rgb(176, 118, 223);
-        border-radius: 45px;
-        color: white;
-      }
-      a:visited {
-        color: white;
-        background-color: rgb(176, 118, 223);
-        text-decoration: none;
+
+        a:link {
+            text-decoration: none;
+            padding: 7px;
+            background-color: rgb(176, 118, 223);
+            border-radius: 45px;
+            color: white;
         }
-        a:hover{
+
+        a:visited {
+            color: white;
+            background-color: rgb(176, 118, 223);
+            text-decoration: none;
+        }
+
+        a:hover {
             background-color: royalblue;
 
         }
-        #button{
-            flex:1;
+
+        #button {
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding-left:30%;
-            padding-right:30%;
+            padding-left: 30%;
+            padding-right: 30%;
         }
-        #history{
+
+        #history {
             font-size: 2vw;
             overflow-y: auto;
-            flex-grow:1;
+            flex-grow: 6;
             min-height: 0;
+            text-align:start;
+            padding-left: 3%;
+            padding-right: 3%;
+            justify-content: start;
         }
-        
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -275,10 +286,10 @@
 
     <div class="mainBod">
         <div class="item" id="past-log">
-            <p style = "font-size: 200%; flex:1;">Past Orders:</p>
-            <div id = "history"></div>
+            <p style="font-size: 200%; flex:1;">Past Orders:</p>
+            <ul id="history"></ul>
         </div>
-        <div class="item" id = "button">
+        <div class="item" id="button">
             <button id="myBtn">Request Change</button>
 
         </div>
@@ -297,8 +308,8 @@
             </div>
         </div>
 
-        </div>
-        
+    </div>
+
     </div>
     <div id="bottom">
 
@@ -306,29 +317,28 @@
     </div>
     <script>
         var uname = sessionStorage.getItem('usernamea');
-        function reqChange(){
+        function reqChange() {
             var message = document.getElementById("message").value;
             var name = document.getElementById("name").value;
             var emailReply = document.getElementById("email").value;
 
             const Http = new XMLHttpRequest();
-            const url='https://script.google.com/macros/s/AKfycbyQF33yt1msej9kH2zNbfLiX1feCscKoft3w7ifu3njj6fmCA/exec';
-            var data = "?message="+message+"&name="+name+"&reply="+emailReply+"&action=change";
-            Http.open("GET", String(url+data));
+            const url = 'https://script.google.com/macros/s/AKfycbyQF33yt1msej9kH2zNbfLiX1feCscKoft3w7ifu3njj6fmCA/exec';
+            var data = "?message=" + message + "&name=" + name + "&reply=" + emailReply + "&action=change";
+            Http.open("GET", String(url + data));
             Http.send();
 
             Http.onreadystatechange = (e) => {
 
-            if (Http.readyState == 4)
-            {
-            alert('Email sent succesfully!');
-            document.getElementById("message").value = "";
-            document.getElementById("name").value = "";
-            document.getElementById("email").value = "";   
+                if (Http.readyState == 4) {
+                    alert('Email sent succesfully!');
+                    document.getElementById("message").value = "";
+                    document.getElementById("name").value = "";
+                    document.getElementById("email").value = "";
+                }
             }
         }
-    }
-            
+
         var modal = document.getElementById("myModal");
         var modal2 = document.getElementById("container");
         // Get the button that opens the modal
@@ -351,13 +361,27 @@
                 modal.style.display = "none";
             }
         }
-        var hist = document.getElementById('history');
+        var ul = document.getElementById('history');
         var papi = sessionStorage.getItem('history').split(',');
         console.log(papi[1]);
-        for(i = 0;i<papi.length;i++){
-            var p = document.createElement("p");
-            p.appendChild(document.createTextNode(papi[i]));
-            hist.appendChild(p);
+        for (i = 0; i < papi.length; i++) {
+            var li = document.createElement("li");
+            li.classList.add("list-group-item", "list-group-item-action", "flex-column", "align-items-start","list-group-item-secondary");
+            var div = document.createElement("div");
+            div.classList.add("d-flex", "w-100");
+            var header = document.createElement("h2");
+            header.appendChild(document.createTextNode(papi[i].substring(0,papi[i].indexOf('Amount'))));
+            header.classList.add("mb-1");
+            var div2 = document.createElement("div");
+            div2.classList.add("d-flex", "w-100");
+            var header2 = document.createElement("h5");
+            header2.appendChild(document.createTextNode(papi[i].substring(papi[i].indexOf('Amount'),papi[i].length)));
+            header2.classList.add("mb-1", "mt-1");
+            div2.appendChild(header2);
+            div.appendChild(header);
+            li.appendChild(div)
+            li.appendChild(div2)
+            ul.appendChild(li);
             console.log(papi[i]);
         }
 
