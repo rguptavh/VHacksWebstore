@@ -142,7 +142,7 @@
 </head>
 <body>
     <div id = "menu">
-        <a href = "login.html" id = "logout">Logout</a>
+        <a href = "index.html" id = "logout">Logout</a>
     <a href = "history.html" id = "profile">View Orders</a></div>
     <div id="mainBod" >
     <ul class="list-group" id="products"></ul>
@@ -235,7 +235,7 @@ function addItem2(){
     var username_sec = sessionStorage.getItem("usernamea");
       if(username_sec==null || username_sec==''){
         alert(username_sec+"Not an authorized user. Please login with an authorized account ");
-        window.location = "login.html";
+        window.location = "index.html";
       }
       else{
             ok = sessionStorage.getItem('itemArr');
@@ -385,7 +385,7 @@ function order(){
               settotal();
             }
             document.getElementById("order").disabled = false;
-            document.getElementById("logout").href = 'login.html';
+            document.getElementById("logout").href = 'index.html';
             document.getElementById("profile").href = 'history.html';
         }
         }
@@ -393,7 +393,7 @@ function order(){
     else{
         alert("No order submitted. Please try again");
         document.getElementById("order").disabled = false;
-        document.getElementById("logout").href = 'login.html';
+        document.getElementById("logout").href = 'index.html';
         document.getElementById("profile").href = 'history.html';
     }
 
