@@ -288,6 +288,8 @@ function addItem2(){
 
 function order(){
     document.getElementById("order").disabled = true;
+    document.getElementById("logout").href = 'javascript: void(0)';
+    document.getElementById("profile").href = 'javascript: void(0)';
     var ord = "";
     var total = 0;
     var bal = parseInt(sessionStorage.getItem("balance"))
@@ -383,12 +385,16 @@ function order(){
               settotal();
             }
             document.getElementById("order").disabled = false;
+            document.getElementById("logout").href = 'login.html';
+            document.getElementById("profile").href = 'history.html';
         }
         }
     }
     else{
         alert("No order submitted. Please try again");
         document.getElementById("order").disabled = false;
+        document.getElementById("logout").href = 'login.html';
+        document.getElementById("profile").href = 'history.html';
     }
 
 }
