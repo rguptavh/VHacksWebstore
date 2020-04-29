@@ -316,6 +316,10 @@
 
     </div>
     <script>
+        if(username_sec==null || username_sec==''){
+        alert(username_sec+"Not an authorized user. Please login with an authorized account ");
+        window.location = "index.html";
+      }
         var uname = sessionStorage.getItem('usernamea');
         function reqChange() {
             var message = document.getElementById("message").value;
