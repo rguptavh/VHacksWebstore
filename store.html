@@ -231,8 +231,8 @@ function addItem2(){
 
         Http.onreadystatechange = (e) => {
             ok = Http.responseText;
-            console.log(String(ok));
-            console.log(Http.readyState);
+            //console.log(String(ok));
+            //console.log(Http.readyState);
         if (Http.readyState == 4)
         {*/
         function loadPage(){
@@ -243,7 +243,7 @@ function addItem2(){
       }
       else{
             ok = sessionStorage.getItem('itemArr');
-            console.log(ok)
+            //console.log(ok)
             if (String(ok)!=""){
             var papi = ok.split(",");
             localStorage.setItem("itemArr",papi);
@@ -301,7 +301,7 @@ function order(){
     var papi = localStorage.getItem("itemArr").split(",");
     for(var i = 0; i<papi.length/3;i++){
         var buy = document.getElementsByTagName("input")[i].value;
-        console.log(buy)
+        //console.log(buy)
         if(buy>0 && buy!=""){
 
             if(buy<=parseInt(papi[i*3+2])){
@@ -322,7 +322,7 @@ function order(){
 
         }
     }
-    console.log(ord);
+    //console.log(ord);
     if(ord!=""){
         const Http = new XMLHttpRequest();
         const url='https://script.google.com/macros/s/AKfycbyQF33yt1msej9kH2zNbfLiX1feCscKoft3w7ifu3njj6fmCA/exec';
@@ -333,15 +333,18 @@ function order(){
         Http.onreadystatechange = (e) => {
             ok = Http.responseText;
             ok = ok.split(',');
-            console.log(String(ok));
-            console.log(Http.readyState);
+            //console.log(String(ok));
+            //console.log(Http.readyState);
         if (Http.readyState == 4)
         {
-            console.log(String(ok));
+            //console.log(String(ok));
 
           if(String(ok[0]) == "true"){
+            document.getElementById("order").disabled = false;
+            document.getElementById("logout").href = 'index.html';
+            document.getElementById("profile").href = 'history.html';
 
-              console.log("truo");
+              //console.log("truo");
               alert("Success!");
               var itemizer = [];
               var history = [];
@@ -374,10 +377,13 @@ function order(){
               loadPage();
               settotal();
 
-            console.log(sessionStorage.getItem('history'));
+            //console.log(sessionStorage.getItem('history'));
             }
             else if (String(ok[0]) == 'INV'){
-              console.log("falso");
+              document.getElementById("order").disabled = false;
+            document.getElementById("logout").href = 'index.html';
+            document.getElementById("profile").href = 'history.html';
+              //console.log("falso");
               alert("Sorry, one or more of your items does not have enough stock. This can happen if someone else places an order while this page is open. The inventory amounts have been refreshed. You can check your order history to see which items went through.");
               var itemizer = [];
               var history = [];
