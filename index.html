@@ -88,6 +88,12 @@ background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, F
       margin-top: 10vh;
       width: 40vmin;
     }
+    input{
+      outline-width: 0;
+    }
+    button{
+      outline-width: 0;
+    }
     </style>
   </head>
 <body>
@@ -123,6 +129,7 @@ background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, F
       function logIn(){
         var uname = document.getElementById("username").value;
         var pword = document.getElementById("password").value;
+        if (uname != "" && pword != ""){
         document.getElementById("login").disabled = true;
         const Http = new XMLHttpRequest();
         const url='https://script.google.com/macros/s/AKfycbyQF33yt1msej9kH2zNbfLiX1feCscKoft3w7ifu3njj6fmCA/exec';
@@ -185,6 +192,10 @@ background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, F
         }
         
 
+      }
+      else[
+        alert("Please Fill All Fields.")
+      ]
       }
 
 
