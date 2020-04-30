@@ -58,6 +58,8 @@
         border-style: none;
         font-size: 3vmin;
         height:5vh;
+        outline-width: 0;
+        outline: none;
 
       }
       button:hover{
@@ -89,6 +91,8 @@
       }
       #order{
           margin-top:2%;
+          outline-width: 0;
+          outline: none;
       }
       #info{
           justify-content: center;
@@ -374,15 +378,38 @@ function order(){
             }
             else if (String(ok[0]) == 'INV'){
               console.log("falso");
-              alert("Sorry, one or more of your items does not have enough stock. This can happen if someone else places an order while this page is open. The inventory amounts have been refreshed.");
+              alert("Sorry, one or more of your items does not have enough stock. This can happen if someone else places an order while this page is open. The inventory amounts have been refreshed. You can check your order history to see which items went through.");
               var itemizer = [];
-              for( i = 1; i<ok.length;i++){
-                  itemizer.push(ok[i]);
-              }      
+              var history = [];
+              for( i = 2; i<ok.length;i++){
+                if(ok[i]!=""){
+                if(!isNaN(ok[i])){
+                    itemizer.push(ok[i]);
+
+                }
+                else if(ok[i].length>=7){
+                    if(ok[i].substring(0,7)!='Product'){
+                        itemizer.push(ok[i]);
+
+                    }
+                    else{
+                        history.push(ok[i]);
+                    }
+
+                }
+                else{
+                    itemizer.push(ok[i]);
+
+                }
+                }
+              }
+              sessionStorage.setItem('balance',String(ok[1]));      
               sessionStorage.setItem('itemArr',itemizer);
+              sessionStorage.setItem('history',history.toString());
               document.getElementById("products").innerHTML = '';
               loadPage();
               settotal();
+
             }
             document.getElementById("order").disabled = false;
             document.getElementById("logout").href = 'index.html';
@@ -391,7 +418,7 @@ function order(){
         }
     }
     else{
-        alert("No order submitted. Please try again");
+        alert("Please select an item to order.");
         document.getElementById("order").disabled = false;
         document.getElementById("logout").href = 'index.html';
         document.getElementById("profile").href = 'history.html';
