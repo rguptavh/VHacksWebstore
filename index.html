@@ -139,13 +139,13 @@ background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, F
 
         Http.onreadystatechange = (e) => {
             ok = Http.responseText;
-            console.log(ok);
+            //console.log(ok);
         if (Http.readyState == 4)
         {
-            console.log(String(ok));
+            //console.log(String(ok));
             ok = ok.split(",");
           if(String(ok[0]) == "true"){
-              console.log("truo");
+              //console.log("truo");
               var baby = [];
               var history = [];
               for( i = 2; i<ok.length;i++){
@@ -170,9 +170,9 @@ background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, F
                 }
                 }
               }
-              console.log(ok.toString());
-              console.log(baby.toString());
-              console.log(history.toString());
+              //console.log(ok.toString());
+              //console.log(baby.toString());
+              //console.log(history.toString());
 
               sessionStorage.setItem('itemArr',baby.toString());
               sessionStorage.setItem('history',history.toString());
@@ -184,7 +184,7 @@ background: linear-gradient(to right, #7BC6CC, #BE93C5); /* W3C, IE 10+/ Edge, F
                window.location = "store.html";
             }
             else{
-              console.log("falso");
+              //console.log("falso");
               alert("failed login");
             }
             document.getElementById("login").disabled = false;
