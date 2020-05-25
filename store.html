@@ -326,7 +326,7 @@ function order(){
     if(ord!=""){
         const Http = new XMLHttpRequest();
         const url='https://script.google.com/macros/s/AKfycbyQF33yt1msej9kH2zNbfLiX1feCscKoft3w7ifu3njj6fmCA/exec';
-        var data = "?username="+uname+"&ord="+ord+"&action=order";
+        var data = "?username="+uname+"&ord="+ord+"&total="+total+"&action=order";
         Http.open("GET", String(url+data));
         Http.send();
 
@@ -416,6 +416,43 @@ function order(){
               loadPage();
               settotal();
 
+            }
+            else if (String(ok[0]) == 'bal'){
+              document.getElementById("order").disabled = false;
+            document.getElementById("logout").href = 'index.html';
+            document.getElementById("profile").href = 'history.html';
+              //console.log("falso");
+              alert("Sorry, you actually don't have enough balance to buy your desired items. Your balance has been set to what is in our database.");
+              var itemizer = [];
+              var history = [];
+              for( i = 2; i<ok.length;i++){
+                if(ok[i]!=""){
+                if(!isNaN(ok[i])){
+                    itemizer.push(ok[i]);
+
+                }
+                else if(ok[i].length>=7){
+                    if(ok[i].substring(0,7)!='Product'){
+                        itemizer.push(ok[i]);
+
+                    }
+                    else{
+                        history.push(ok[i]);
+                    }
+
+                }
+                else{
+                    itemizer.push(ok[i]);
+
+                }
+                }
+              }
+              sessionStorage.setItem('balance',String(ok[1]));      
+              sessionStorage.setItem('itemArr',itemizer);
+              sessionStorage.setItem('history',history.toString());
+              document.getElementById("products").innerHTML = '';
+              loadPage();
+              settotal();
             }
             document.getElementById("order").disabled = false;
             document.getElementById("logout").href = 'index.html';
